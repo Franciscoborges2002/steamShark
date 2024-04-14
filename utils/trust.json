@@ -1,0 +1,13 @@
+{
+    "description": "A list with trust worthy steam websites.",
+    "data":[
+        {
+            "url": "https://steamcommunity.com/",
+            "description": "Official steam page"
+        },
+        {
+            "url": "https://steamdb.info/",
+            "description": "Database of eveything on steam"
+        }
+    ]
+}
