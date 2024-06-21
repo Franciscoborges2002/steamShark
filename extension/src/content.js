@@ -1,11 +1,11 @@
-function verifyWebsite(){
-    console.log("ASteamShark started!");//Just to register what ASteamShark did on console
+function verifyWebsite() {
+  console.log("ASteamShark started!"); //Just to register what ASteamShark did on console
 
-    var url = window.location.href; //Get the url of the page
-    console.log("ASteamShark: url is " + url);
-    //const scamWebsites = require("../utils/scam.json");
+  var url = window.location.href; //Get the url of the page
+  console.log("ASteamShark: url is " + url);
+  //const scamWebsites = require("../utils/scam.json");
 
-    // Get scam websites, from github repo
+  // Get scam websites, from github repo
   fetch(
     "https://raw.githubusercontent.com/Franciscoborges2002/ASteamShark/main/utils/scam.json"
   )
@@ -21,18 +21,16 @@ function verifyWebsite(){
       if (data.data.includes(urlVerify)) {
         console.log("The website is in the scam list.");
         isLegit = false;
-
-        
       } /*else {
             console.log("The website is not in the scam list.");
           }*/
     })
     .catch((error) => {
       isLegit = "error";
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:" + error);
     });
 
-    // Get legit websites, from github repo
+  // Get legit websites, from github repo
   fetch(
     "https://raw.githubusercontent.com/Franciscoborges2002/ASteamShark/main/utils/trust.json"
   )
@@ -48,16 +46,14 @@ function verifyWebsite(){
       //Verify if its in the list of scam websites
       if (isTrustworthy) {
         console.log("The website is in the trust list.");
-
       } /*else {
             console.log("The website is not in the scam list.");
           }*/
     })
     .catch((error) => {
       isLegit = "error";
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:" + error);
     });
-
 }
 
 verifyWebsite();
