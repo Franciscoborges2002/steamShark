@@ -1,13 +1,19 @@
 {
-    "name": "ASteamShark",
-    "version": "1.0.0",
-    "description": "Anti scam steam shark is an extension that veryfies the page that the user is entering and tries to find in the databse that website.",
-    "manifest_version": 3,
-    "author": "Francisco Borges",
-    "content_scripts": [
-        {
-          "js": ["./src/content.js"],
-          "matches": ["<all_urls>"]
-        }
-    ]
+  "manifest_version": 3,
+  "name": "🦈SteamShark",
+  "version": "1.0.0",
+  "description": "Steam shark is an extension that veryfies if the page you're getting is a scam website or not.",
+  "author": "Francisco Borges",
+  "content_scripts": [
+    {
+      "js": ["./src/content.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "./images/icon-16.jpg",
+    "32": "./images/icon-32.jpg",
+    "48": "./images/icon-48.jpg",
+    "128": "./images/icon-128.jpg"
+  }
 }
