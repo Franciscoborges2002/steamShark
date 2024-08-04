@@ -10,6 +10,14 @@
       "matches": ["<all_urls>"]
     }
   ],
+  "permissions": ["webNavigation", "activeTab", "storage"],
+  "background": {
+    "service_worker": "./src/service_workers/background.js"
+  },
+  "action": {
+    "default_popup": "./src/hello.html",
+    "default_icon": "./images/icon-128.jpg"
+  },
   "icons": {
     "16": "./images/icon-16.jpg",
     "32": "./images/icon-32.jpg",

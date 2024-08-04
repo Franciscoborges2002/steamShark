@@ -4,7 +4,7 @@ Hi, if you're reading this you probably want to contribute to ASteamShark, one o
 
 * Add a new website to the scam list
 * Add a new website to the trust list
-* Make a dispute to a scam/trust website
+* Make a dispute of an scam/trust website
 * General contribution
 
 [ ] - Make each guide after.
