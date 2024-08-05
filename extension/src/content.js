@@ -1,13 +1,3 @@
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.message === "checkUrl") {
-    const currentUrl = window.location.href;
-    if (currentUrl.includes("backpack.tf")) {
-      // Redirect logic here
-      window.location.href = chrome.runtime.getURL("src/warning.html");
-    }
-  }
-});
-
 let resultJSONScam, resultJSONTrust; // Define resultJSON in the outer scope
 
 //Get scam Websites from storage local
@@ -17,12 +7,11 @@ chrome.storage.local.get(["scamWebsites"], (result) => {
 
   const currentTime = new Date();
   const lastCheckupTime = new Date(resultJSONScam.lastCheckup);
-  const hoursSinceLastCheckup =
-    Math.abs(currentTime - lastCheckupTime) / (60);//1000 * 60 * 60
+  const hoursSinceLastCheckup = Math.abs(currentTime - lastCheckupTime) / 60; //1000 * 60 * 60
 
   if (hoursSinceLastCheckup > 1) {
     // Send a message to the service worker to fetch and store new data
-    console.log("Fetching data!")
+    console.log("Fetching data!");
     chrome.runtime.sendMessage({ message: "fetchData" });
   } else {
     console.log("Less than 1 min has passed since the last checkup.");
@@ -36,12 +25,11 @@ chrome.storage.local.get(["trustWebsites"], (result) => {
 
   const currentTime = new Date();
   const lastCheckupTime = new Date(resultJSONTrust.lastCheckup);
-  const hoursSinceLastCheckup =
-    Math.abs(currentTime - lastCheckupTime) / (60);//1000 * 60 * 60
+  const hoursSinceLastCheckup = Math.abs(currentTime - lastCheckupTime) / 60; //1000 * 60 * 60
 
   if (hoursSinceLastCheckup > 1) {
     // Send a message to the service worker to fetch and store new data
-    console.log("Fetching data!")
+    console.log("Fetching data!");
     chrome.runtime.sendMessage({ message: "fetchData" });
   } else {
     console.log("Less than 1 min has passed since the last checkup.");
@@ -61,21 +49,31 @@ async function verifyWebsite() {
 
   // Remove the http and https for scam website list
   urlVerify = url
-  .replace("http://", "")
-  .replace("https://", "")
-  .replace("/", "");
+    .replace("http://", "")
+    .replace("https://", "")
+    .replace("/", "");
 
   // Verify if it's in the list of scam websites
   if (resultJSONScam.data.includes(urlVerify)) {
     console.log("The website is in the scam list.");
-    injectScamHTML(url + " is in the scam list!");
+    //injectScamHTML(url + " is in the scam list!");
     isLegit = false;
+
+    /* chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+      chrome.runtime.sendMessage({ action: "redirectWarningPage" });
+    }); */
+    //Send a message to service worker to redirect to scam website page
+    const response = await chrome.runtime.sendMessage({ action: "redirectWarningPage" });
+    // do something with response here, not outside the function
+    console.log(response);
   }
 
   var urlObject = new URL(url); // Make an URL object
   var domain = urlObject.origin + "/"; // Get the origin of the url and add "/"
 
-  const isTrustworthy = resultJSONTrust.data.some((item) => item.url === domain); // Iterate through the data from the JSON to see if the URL is in the list
+  const isTrustworthy = resultJSONTrust.data.some(
+    (item) => item.url === domain
+  ); // Iterate through the data from the JSON to see if the URL is in the list
 
   // Verify if it's in the list of trustworthy websites
   if (isTrustworthy) {
@@ -91,7 +89,6 @@ setTimeout(() => {
   console.log(resultJSONScam.data); // This will log the data once it's available
   verifyWebsite();
 }, 1000); // Adjust the timeout as needed
-
 
 /*
  * Function to inject the html into the page.

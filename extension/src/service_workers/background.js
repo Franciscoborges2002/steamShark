@@ -1,11 +1,11 @@
-chrome.webNavigation.onCompleted.addListener(
+/* chrome.webNavigation.onCompleted.addListener(
   (details) => {
     chrome.tabs.sendMessage(details.tabId, { message: "checkUrl" });
     console.log("backpack.tf acessado");
   },
   { url: [{ schemes: ["http", "https"], hostSuffix: "backpack.tf" }] }
 );
-
+ */
 //fetch data
 chrome.runtime.onInstalled.addListener(() => {
   fetchDataAndStore();
@@ -72,9 +72,10 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "redirectWarningPage") {
       // Assuming the extension ID is known and static, replace 'YOUR_EXTENSION_ID' with the actual ID
       const extensionId = 'dfmimgfngfjccnpppogmbjggmapndefk';
-      const warningPageUrl = `chrome-extension://${extensionId}/warning.html`;
+      const warningPageUrl = `chrome-extension://${extensionId}/src/warning.html`;
       
       // Update the tab's URL to navigate to the warning page
       chrome.tabs.update(sender.tab.id, {url: warningPageUrl});
+      sendResponse("Redirected")
     }
   });

@@ -1,29 +1,112 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scam Page</title>
+    <style>
+        body {
+            background-color: #ff6161;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: start;
+            padding-left: 2%;
+        }
+
+        footer a{
+            font-size: larger;
+        }
+
+        .header{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iconOutter {
+            background-color: #2D3250;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 100%;
+            /* To display in middle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Have a pointer cursor on hover */
+            cursor: pointer;
+
+            /* transition: 0.3s; */
+        }
+
+        /* .iconOutter:hover{
+            width: 5.5rem;
+            height: 5.5rem;
+        }*/
+
+        .iconInner {
+            background-color: #424769;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 100%;
+            /* To display in middle */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Have a pointer cursor on hover */
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .iconInner:hover {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        .iconContent {
+            font-size: 30px;
+        }
+    </style>
+</head>
 
 <body>
-    <!-- HEADER -->
+    <!-- ALL CONTENT -->
     <div>
-        <h1>SteamShark</h1>
-    </div>
+        <!-- HEADER -->
+        <div class="header">
+            <div class="iconOutter">
+                <div class="iconInner">
+                    <span class="iconContent">🦈</span>
+                </div>
+            </div>
+            <h1>URL is a scam page!</h1>
+        </div>
 
-    <!-- CONTENT -->
-    <div>
-        <ul>
-            <li>aaaaa</li>
-        </ul>
-
+        <p>This page might not be safe. Be cautious of any suspicious links or requests for personal information.</p>
+        
+        <div class="contentFooter">
+            <p>You can still go to the page (url), just click <a href="#">here</a>.</p>
+        </div>
     </div>
-
-    <!-- FOOTER  -->
-    <div>
-        <a href="https://google.com" target="_blank">Website</a> |
-        <a href="https://github.com/Franciscoborges2002/ASteamShark" target="_blank">Github</a>
-    </div>
+    <footer>
+        <p>steamShark 2024-2024. All rights reserved.</p>
+        <a href="https://github.com/Franciscoborges2002/steamShark">GitHub</a>
+    </footer>
 </body>
-
-<style>
-
-
-</style>
 
 </html>
