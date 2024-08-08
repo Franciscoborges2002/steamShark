@@ -71,7 +71,7 @@ async function fetchDataAndStore() {
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "redirectWarningPage") {
       // Assuming the extension ID is known and static, replace 'YOUR_EXTENSION_ID' with the actual ID
-      const extensionId = 'dfmimgfngfjccnpppogmbjggmapndefk';
+      const extensionId = 'kklbgdgiockjcadlcgajdafpiabcneig';
       const warningPageUrl = `chrome-extension://${extensionId}/src/warning.html`;
       
       // Update the tab's URL to navigate to the warning page

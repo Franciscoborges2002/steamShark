@@ -23,11 +23,15 @@
         },
         {
             "url": "https://scrap.tf/",
-            "description": "TF2 trading website"
+            "description": "TF2 trading website!"
         },
         {
             "url": "https://stntrading.eu/",
-            "description": "TF2 trading website"
+            "description": "TF2 trading website!"
+        },
+        {
+            "url": "https://www.faceit.com/",
+            "description": "Website for competitive matchmaking for different games!"
         }
     ]
 }
