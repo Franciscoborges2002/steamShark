@@ -2,36 +2,40 @@
     "description": "A list with trust worthy steam websites.",
     "data":[
         {
-            "url": "https://steamcommunity.com/",
+            "url": "https://www.steamcommunity.com/",
             "description": "Official steam page!"
         },
         {
-            "url": "https://steamdb.info/",
+            "url": "https://www.steamdb.info/",
             "description": "Database of eveything on steam!"
         },
         {
-            "url": "https://cs.money/",
+            "url": "https://www.cs.money/",
             "description": "CS trading website!"
         },
         {
-            "url": "https://tradeit.gg/",
+            "url": "https://www.tradeit.gg/",
             "description": "CS trading website!"
         },
         {
-            "url": "https://backpack.tf/",
+            "url": "https://www.backpack.tf/",
             "description": "Leading economic resource for Team Fortress 2!"
         },
         {
-            "url": "https://scrap.tf/",
+            "url": "https://www.scrap.tf/",
             "description": "TF2 trading website!"
         },
         {
-            "url": "https://stntrading.eu/",
+            "url": "https://www.stntrading.eu/",
             "description": "TF2 trading website!"
         },
         {
             "url": "https://www.faceit.com/",
             "description": "Website for competitive matchmaking for different games!"
+        },
+        {
+            "url": "https://www.csfloat.com/",
+            "description": "Most wellknown database website in CS2!"
         }
     ]
 }
