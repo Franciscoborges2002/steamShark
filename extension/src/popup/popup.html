@@ -1,0 +1,106 @@
+<html>
+
+<head>
+    <title>steamShark</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            color: white;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            width: 200px;
+            height: 150px;
+            text-align: center;
+            background-color: #2D3250;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        header {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content{
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .content ul{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .sub-header {
+            font-size: smaller;
+        }
+
+        li a {
+            font-size: medium;
+            font-weight: lighter;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            font-weight: bold;
+        }
+
+        footer {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: #424769;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- CONTENT -->
+    <div class="wrapper">
+        <!-- HEADER -->
+        <header>
+            <div class="image">
+                <img src="../../images/icon-32.jpg" />
+            </div>
+            <h1>SteamShark</h1>
+            <div class="sub-header">
+                <p>v1.0.0</p>
+            </div>
+        </header>
+
+
+        <!-- CONTENT -->
+        <div class="content">
+            <ul>
+                <li>
+                    <a href="chrome-extension://kklbgdgiockjcadlcgajdafpiabcneig/src/pages/settings.html"
+                        target="_blank">Settings</a>
+                </li>
+                <li>
+                    <a href="chrome-extension://kklbgdgiockjcadlcgajdafpiabcneig/src/pages/history.html"
+                        target="_blank">History</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- FOOTER  -->
+        <footer>
+            <a href="https://google.com" target="_blank">Website</a> |
+            <a href="https://github.com/Franciscoborges2002/ASteamShark" target="_blank">Github</a>
+        </footer>
+    </div>
+
+
+    <!-- SCRIPT -->
+    <script src="popup.js"></script>
+</body>
+
+</html>

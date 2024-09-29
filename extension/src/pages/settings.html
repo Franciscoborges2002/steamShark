@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦈steamShark - Options</title>
+    <link rel="stylesheet" href="./styles/settings.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- HEADER SECTION -->
+        <header>
+            <div class="leftHeader">
+                <a href="https://franciscoborges2002.github.io/steamShark/" class="logo">🦈steamShark</a>
+                <nav>
+                    <a class="current">
+                        Options
+                    </a>
+                    <a href="chrome-extension://kklbgdgiockjcadlcgajdafpiabcneig/src/pages/history.html">
+                        History
+                    </a>
+                </nav>
+            </div>
+
+            <div class="rightHeader">
+                <a href="https://github.com/Franciscoborges2002/ASteamShark" target="_blank">Github</a>
+            </div>
+        </header>
+
+        <!-- CONTENT SECTION -->
+        <div class="content">
+            <div class="contentHeader">
+                <h2>Options</h2>
+            </div>
+
+            <div class="allOptions">
+                <!-- POPUP OPTIONS -->
+                <div class="option">
+                    <!-- HEADER POPUP OPTIONS -->
+                    <div class="optionHeader">
+                        <h2>Popup Options:</h2>
+                    </div>
+                    <!-- CONTENT POPUP OPTIONS -->
+                    <div class="optionContent">
+                        <div class="optionTextSelect">
+                            <div class="optionText">
+                                <p>Always Show popUp</p>
+                                <div class="iconToolTip">
+                                    <img src="../icons/info.svg" width="20px" height="20px" id="infoIcon"
+                                        alt="Info Icon" />
+                                    <!-- Hidden div for the tooltip -->
+                                    <div id="tooltip" style="display: none;">
+                                        The popup when the website is in the trusted list!
+                                    </div>
+                                </div>
+                            </div>
+                            <select name="showPopup" id="showPopUpInRepeatedTrustedWebsite">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCAM WEB PAGE OPTIONS -->
+                <div class="option">
+                    <!-- HEADER SCAM WEB PAGE OPTIONS -->
+                    <div class="optionHeader">
+                        <h2>Scam Website Options:</h2>
+                    </div>
+                    <!-- CONTENT SCAM WEB PAGE OPTIONS -->
+                    <div class="optionContent">
+                        <div class="optionTextSelect">
+                            <div class="optionText">
+                                <p>Only show popup</p>
+
+                                <label class="switch">
+                                    <input type="checkbox" id="redirectToWarningPage">
+                                    <span class="slider round"></span>
+                                </label>
+
+                                <p>Redirect to a warning page</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HISTORY OPTIONS -->
+                <div class="option">
+                    <!-- HEADER HISTORY OPTIONS -->
+                    <div class="optionHeader">
+                        <h2>History Options:</h2>
+                    </div>
+                    <!-- CONTENT HISTORY OPTIONS -->
+                    <div class="optionContent">
+                        <div class="optionTextSelect">
+                            <div class="optionText optionTextHistory">
+                                <p>How much time to register in history</p>
+                                <input type="number" min="0" id="howManyTimeRegisterRepeatedWebsiteInHistory" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- SSAVE BUTTON -->
+            <div class="saveSection">
+                <button class="saveBtn" id="saveBtn">SAVE</button>
+            </div>
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <footer>
+            <!-- UPPER SECTION -->
+            <div class="upperFooter">
+                <!-- FIRST SECTION -->
+                <div class="leftFooter">
+                    <!-- HEADER SECTION -->
+                    <div class="leftFooterHeader">
+                        <p class="font-bold text-lg">🦈steamShark</p>
+                    </div>
+                    <!-- CONTENT -->
+                    <div class="leftFooterContent">
+                        <p>The tool that smells scams websites!</p>
+                    </div>
+                </div>
+
+                <!-- SECOND SECTION -->
+                <div class="rightFooter">
+                    <!-- HEADER SECTION -->
+                    <div class="rightFooterHeader">
+                        <p> USEFUL LINKS</p>
+                    </div>
+                    <!-- CONTENT -->
+                    <div class="rightFooterContent">
+                        <ul>
+                            <li>> <a href="https://github.com/Franciscoborges2002/ASteamShark"
+                                    target="_blank">Github</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- BOTTOM SECTION -->
+            <div class="lowerFooter">
+                <p>Made with ❤️ and ☕ by <a href="https://github.com/Franciscoborges2002"
+                        class="font-medium transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline">Francisco
+                        Borges</a>.</p>
+            </div>
+        </footer>
+        <script src="./scripts/settings.js"></script>
+</body>
+
+</html>

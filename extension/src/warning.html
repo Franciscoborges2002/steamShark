@@ -27,11 +27,11 @@
             padding-left: 2%;
         }
 
-        footer a{
+        footer a {
             font-size: larger;
         }
 
-        .header{
+        .header {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -81,6 +81,24 @@
         .iconContent {
             font-size: 30px;
         }
+
+        .footerLinks ul {
+            padding: 0px;
+            list-style: none;
+        }
+
+        .footerLinks a {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #8400ff;
+            transition: all 0.05s;
+            text-decoration: none;
+        }
+
+        .footerLinks a:hover {
+            color: #9333ea;
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -94,19 +112,27 @@
                     <span class="iconContent">🦈</span>
                 </div>
             </div>
-            <h1>URL is a scam page!</h1>
+            <h1><span id="nameScamWebsite">WEBSITE NAME</span> is a scam page!</h1>
         </div>
 
         <p>This page might not be safe. Be cautious of any suspicious links or requests for personal information.</p>
-        
+
         <div class="contentFooter">
-            <p>You can still go to the page (url), just click <a href="#">here</a>.</p>
+            <p>You can still go to the page (<span id="urlScamWebsite">url</span>), just click <a
+                    id="redirectScamWebsite" target="_blank">here</a>.</p>
         </div>
     </div>
     <footer>
         <p>steamShark 2024-2024. All rights reserved.</p>
-        <a href="https://github.com/Franciscoborges2002/steamShark">GitHub</a>
+        <div class="footerLinks">
+            <ul>
+                <li><a href="https://github.com/Franciscoborges2002/ASteamShark" target="_blank">Github</a>
+                </li>
+            </ul>
+        </div>
     </footer>
+
+    <script src="./warning.js"></script>
 </body>
 
 </html>

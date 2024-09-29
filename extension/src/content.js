@@ -1,48 +1,61 @@
-let resultJSONScam, resultJSONTrust; // Define resultJSON in the outer scope
+async function getValues() {
+  // Helper function to wrap chrome.storage.local.get in a promise
+  const getStorageData = (key) =>
+    new Promise((resolve, reject) => {
+      chrome.storage.local.get([key], (result) => {
+        if (chrome.runtime.lastError) {
+          reject(chrome.runtime.lastError.message);
+        } else {
+          resolve(JSON.parse(result[key]));
+        }
+      });
+    });
 
-//Get scam Websites from storage local
-chrome.storage.local.get(["scamWebsites"], (result) => {
-  // Parse the retrieved data
-  resultJSONScam = JSON.parse(result.scamWebsites);
+  try {
+    // Start all storage retrievals concurrently
+    const [
+      resultJSONTrust,
+      resultJSONScam,
+      resultJSONhistory,
+      resultJSONsettings,
+    ] = await Promise.all([
+      getStorageData("trustWebsites"),
+      getStorageData("scamWebsites"),
+      getStorageData("historyWebsites"),
+      getStorageData("settings"),
+    ]);
 
-  const currentTime = new Date();
-  const lastCheckupTime = new Date(resultJSONScam.lastCheckup);
-  const hoursSinceLastCheckup = Math.abs(currentTime - lastCheckupTime) / 60; //1000 * 60 * 60
+    /* throw new Error("errrroororr"); */
 
-  if (hoursSinceLastCheckup > 1) {
-    // Send a message to the service worker to fetch and store new data
-    console.log("Fetching data!");
-    chrome.runtime.sendMessage({ message: "fetchData" });
-  } else {
-    console.log("Less than 1 min has passed since the last checkup.");
+    // Return the results
+    return [
+      resultJSONTrust,
+      resultJSONScam,
+      resultJSONhistory,
+      resultJSONsettings,
+    ];
+  } catch (error) {
+    console.error("Error retrieving data:", error);
+    injectPopup("error", "getting the data from storage");
   }
-});
-
-//Get trust Websites from storage local
-chrome.storage.local.get(["trustWebsites"], (result) => {
-  // Parse the retrieved data
-  resultJSONTrust = JSON.parse(result.trustWebsites);
-
-  const currentTime = new Date();
-  const lastCheckupTime = new Date(resultJSONTrust.lastCheckup);
-  const hoursSinceLastCheckup = Math.abs(currentTime - lastCheckupTime) / 60; //1000 * 60 * 60
-
-  if (hoursSinceLastCheckup > 1) {
-    // Send a message to the service worker to fetch and store new data
-    console.log("Fetching data!");
-    chrome.runtime.sendMessage({ message: "fetchData" });
-  } else {
-    console.log("Less than 1 min has passed since the last checkup.");
-  }
-});
+}
 
 //Main function
-async function verifyWebsite() {
+async function verifyWebsite(
+  resultJSONTrust,
+  resultJSONScam,
+  resultJSONhistory,
+  resultJSONsettings
+) {
+  console.log(resultJSONScam); // This will log the data once it's available
+  console.log(resultJSONTrust); // This will log the data once it's available
+  console.log(resultJSONhistory); // This will log the data once it's available
+  console.log(resultJSONsettings); // This will log the data once it's available
+
   console.log("🦈steamShark started!"); //Just to register what ASteamShark did on console
 
   var url = window.location.href; //Get the url of the page
   console.log("🦈steamShark: url is " + url);
-  //const scamWebsites = require("../utils/scam.json");
 
   let urlVerify;
   let isLegit = true;
@@ -53,62 +66,122 @@ async function verifyWebsite() {
     .replace("https://", "")
     .replace("/", "");
 
+  //Create the objects to verify in trust list
+  const urlObject = new URL(url); // Make an URL object
+  const domain = urlObject.origin + "/"; // Get the origin of the url and add "/"
+
   // Verify if it's in the list of scam websites
   if (resultJSONScam.data.includes(urlVerify)) {
-    console.log("The website is in the scam list.");
-    //injectScamHTML(url + " is in the scam list!");
+    console.log("🦈steamShark: The website is in the scam list!");
     isLegit = false;
 
-    /* chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-      chrome.runtime.sendMessage({ action: "redirectWarningPage" });
-    }); */
-    //Send a message to service worker to redirect to scam website page
-    const response = await chrome.runtime.sendMessage({ action: "redirectWarningPage" });
-    // do something with response here, not outside the function
-    console.log(response);
+    //Register the website to the history
+    const responseHistory = await chrome.runtime.sendMessage({
+      action: "registerHistoryStorage",
+      trusted: false,
+    });
+
+    
+  //Check if is to redirect or only show popUp
+  if (resultJSONsettings.data.redirectToWarningPage) {
+    console.log("🦈steamShark: Redirecting to warning page!"); //Just to register what ASteamShark did on console
+
+    const response = await chrome.runtime.sendMessage({
+      action: "redirectWarningPage",
+    });
+  } else {
+    //Only show popUp
+    console.log("🦈steamShark: Show scam popup!");
+    injectPopup(false, domain);
   }
 
-  var urlObject = new URL(url); // Make an URL object
-  var domain = urlObject.origin + "/"; // Get the origin of the url and add "/"
+    //Return from the function
+    return;
+  }
 
-  const isTrustworthy = resultJSONTrust.data.some(
-    (item) => item.url === domain
-  ); // Iterate through the data from the JSON to see if the URL is in the list
+  // Iterate through the data from the JSON to see if the URL is in the list
+  const isTrustworthy =
+    resultJSONTrust.data.filter((item) => item.url === domain).length > 0;
 
   // Verify if it's in the list of trustworthy websites
   if (isTrustworthy) {
     console.log("The website is in the trust list.");
-    injectTrustHTML(url + " is in trust list!");
+
+    //Register the website to the history
+    const responseHistory = await chrome.runtime.sendMessage({
+      action: "registerHistoryStorage",
+      trusted: true,
+    });
+    console.log(responseHistory);
+
+    /*
+     * If it is not a scam website, and is trust worthy
+     * Before injecting the html, lets check if its in the last x minutes(get in options) of the history
+     */
+
+    injectPopup(true, domain);
+
+    //Return from the function
+    return;
   }
 
   console.log(isLegit); // Example usage
 }
 
-// Access resultJSON.data outside the callback function
-setTimeout(() => {
-  console.log(resultJSONScam.data); // This will log the data once it's available
-  verifyWebsite();
-}, 1000); // Adjust the timeout as needed
+/*
+Function to initiate everything, 
+*/
+async function start() {
+  try {
+    const data = await getValues();
+
+    verifyWebsite(data[0], data[1], data[2], data[3]);
+  } catch (error) {
+    console.error("Error retrieving data: ", error);
+  }
+}
+
+//Start the initial function to execute all stuff
+start();
 
 /*
- * Function to inject the html into the page.
- */
-function injectTrustHTML(textAdd) {
-  console.log("injecting");
-  let body = document.querySelector("body");
-  let newDiv = document.createElement("div");
-  let closeButton = document.createElement("button"); //button to make it disappear
+Function to inject a popup in the page
+*/
+function injectPopup(succeded, textAdd) {
+  const body = document.querySelector("body");
+  const newDiv = document.createElement("div");
+  const closeButton = document.createElement("button"); //button to make it disappear
 
-  //The text to add to the div
-  textAdd = new URL(textAdd).hostname;
+  switch (succeded) {
+    case true:
+      newDiv.innerHTML = `<h5>🦈 ${textAdd} is trusted!</h5>`;
+      newDiv.style.backgroundColor = "rgba(11,156,49,0.85)";
+      break;
+    case false:
+      newDiv.innerHTML = `<h5>🦈 ${textAdd} is NOT trusted!</h5>`;
+      newDiv.style.backgroundColor = "rgba(255,3,3,0.85)";
+      break;
+    case "error":
+      newDiv.innerHTML = `<h5>🦈steamShark An error occurred while trying to ${textAdd}.</h5>`;
+      newDiv.style.backgroundColor = "rgba(255,165,0,0.85)";
+      break;
+  }
 
   // Assign a unique ID to the div
-  newDiv.id = "trustPopup";
-  //Add the text
-  newDiv.innerHTML = `<h5>🦈 ${textAdd} is trusted!</h5>`;
+  newDiv.id = "steamSharkPopUp";
 
   //Add propreties to the butotn
   closeButton.textContent = "X";
+  closeButton.style.width = "30px";
+  closeButton.style.height = "30px";
+  closeButton.style.backgroundColor = "white";
+  closeButton.style.border = "none";
+  closeButton.style.borderRadius = "5px";
+  closeButton.style.cursor = "pointer";
+  closeButton.style.fontWeight = "bold";
+  closeButton.style.color = "black";
+  closeButton.style.fontSize = "small";
+
   closeButton.addEventListener("click", function () {
     newDiv.remove(); // Remove the popup when the button is clicked
   });
@@ -120,44 +193,26 @@ function injectTrustHTML(textAdd) {
   newDiv.style.top = "4rem";
   newDiv.style.right = "1rem";
   newDiv.style.zIndex = "9999"; // Increased z-index
-  newDiv.style.backgroundColor = "rgba(11,156,49,0.85)";
   newDiv.style.padding = "1rem"; // Add padding around the content
   newDiv.style.display = "flex";
   newDiv.style.flexDirection = "row";
   newDiv.style.gap = "1.5rem";
   newDiv.style.justifyContent = "space-between";
   newDiv.style.borderRadius = "0.75rem";
-
-  //button style
-  //closeButton.style.color = "white";
+  newDiv.style.width = "300px";
+  newDiv.style.fontSize = "x-large";
+  newDiv.style.color = "white";
+  newDiv.style.display = "flex";
+  newDiv.style.flexDirection = "row";
+  newDiv.style.alignItems = "center";
 
   body.insertAdjacentElement("beforebegin", newDiv);
 
   // Schedule the div to be removed after 10 seconds
   setTimeout(function () {
-    let popupToRemove = document.getElementById("trustPopup");
+    let popupToRemove = document.getElementById("steamSharkPopUp");
     if (popupToRemove) {
       popupToRemove.remove();
     }
   }, 10000); // 10000 milliseconds = 10 seconds
-}
-
-/*
- * Function to inject the html into the page.
- */
-function injectScamHTML(textAdd) {
-  let body = document.querySelector("body");
-  let newDiv = document.createElement("div");
-  newDiv.innerHTML = `<p></p><h3>${textAdd}</h3>
-                      <button>X</button>
-  `;
-
-  newDiv.style.backgroundColor = "rgba(230,0,0,0.4)";
-  newDiv.style.padding = "10px";
-  newDiv.style.display = "flex";
-  newDiv.style.flexDirection = "row";
-  newDiv.style.justifyContent = "space-between";
-  newDiv.style.paddingRight = "30px";
-
-  body.insertAdjacentElement("beforebegin", newDiv);
 }
