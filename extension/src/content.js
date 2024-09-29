@@ -81,19 +81,18 @@ async function verifyWebsite(
       trusted: false,
     });
 
-    
-  //Check if is to redirect or only show popUp
-  if (resultJSONsettings.data.redirectToWarningPage) {
-    console.log("🦈steamShark: Redirecting to warning page!"); //Just to register what ASteamShark did on console
+    //Check if is to redirect or only show popUp
+    if (resultJSONsettings.data.redirectToWarningPage) {
+      console.log("🦈steamShark: Redirecting to warning page!"); //Just to register what ASteamShark did on console
 
-    const response = await chrome.runtime.sendMessage({
-      action: "redirectWarningPage",
-    });
-  } else {
-    //Only show popUp
-    console.log("🦈steamShark: Show scam popup!");
-    injectPopup(false, domain);
-  }
+      const response = await chrome.runtime.sendMessage({
+        action: "redirectWarningPage",
+      });
+    } else {
+      //Only show popUp
+      console.log("🦈steamShark: Show scam popup!");
+      injectPopup(false, domain);
+    }
 
     //Return from the function
     return;
@@ -108,11 +107,11 @@ async function verifyWebsite(
     console.log("The website is in the trust list.");
 
     //Register the website to the history
-    const responseHistory = await chrome.runtime.sendMessage({
+    await chrome.runtime.sendMessage({
       action: "registerHistoryStorage",
       trusted: true,
     });
-    console.log(responseHistory);
+
 
     /*
      * If it is not a scam website, and is trust worthy

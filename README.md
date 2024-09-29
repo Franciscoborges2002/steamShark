@@ -1,11 +1,10 @@
-# ASteamShark
-Anti scam steam shark
+# steamShark
 
-The script that smells scam websites
+The script that smells steam scam websites!
 
 The core of the project is just a "database" (2 json files) that contians urls of the scamy websites and legist websites.
 
-
+<a href="https://franciscoborges2002.github.io/steamShark/" target="_blank">Website</a>
 
 <h1>steamShark</h1>
 
@@ -15,6 +14,7 @@ The core of the project is just a "database" (2 json files) that contians urls o
     <a href="#howToInstall">How to Install</a>
     <a href="#features">Features</a>
     <a href="#howItWorks">How It Works</a>
+    <a href="#roadMap">Road Map</a>
     <a href="#contributing">Contributing</a>
 </nav>
 
@@ -48,10 +48,13 @@ The core of the project is just a "database" (2 json files) that contians urls o
 <h3>Tampermonkey</h3>
 
 ### Pre-requesites
+
 Have Tampermonkey installed, you can download it through the [official website](https://www.tampermonkey.net/).
 
 ### Installing the script
+
 You just need to install it via tampermonkey
+
 </div>
 
 <div id="installExtension">
@@ -59,10 +62,13 @@ You just need to install it via tampermonkey
 
 You just need to go to the following page and add the extension to your web browser
 [ASteamShark](https://www.google.com).
+
 </div>
 
 And it's done!
-    </div>
+
+</div>
+
 </div>
 
 <!-- FEATURES -->
@@ -89,7 +95,29 @@ And it's done!
     </div>
     <!-- CONTENT -->
     <div>
-        To complete
+        <p>At the core of the project are 2 json files. One containing the trusted websites, the other one containing scam websites.</p>
+        <p>The script gets those 2 json files from the github repository. After that fetchs the data when you are active and makes that automatically from hour to hour.</p>
+        <p>Then just scouts those 2 files to check if the websites is present in one of those lists nad BOOM!</p>
+        <p>If the website is not present in the lists but have in url one part that contains in <code>./utils/suspicious</code> will appear a popup to warn the person and to ask to add to the database.</p>
+    </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div id="roadMap">
+    <!-- HEADER -->
+    <div>
+        <h2>Road Map</h2>
+    </div>
+    <!-- CONTENT -->
+    <div>
+        <ul>
+            <li>
+                [ ] Have the application ready to use.
+            </li>
+            <li>
+                [ ] Publish on marketplaces of extensions to people to use.
+            </li>
+        </ul>
     </div>
 </div>
 
@@ -104,6 +132,7 @@ And it's done!
         <p>
 
 Everyone is more than welcome to contribute to the project, but for an organized participation, it's important to read the [contributing document](./CONTRIBUTING.md) before doing it!
+
 </p>
 
 </div>
