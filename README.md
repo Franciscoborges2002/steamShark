@@ -110,12 +110,18 @@ And it's done!
     <!-- CONTENT -->
     <div>
         <ul>
-            <h3>Version 1.0.0</h3>
+            <h3>Current version 1.0.1</h3>
             <li>
                 [ ] Finish the application
             </li>
             <li>
                 [ ] Publish on marketplaces of extensions to people to use.
+            </li>
+            <li>
+                [ ] Create an steam bot so users can contribute to the lists as well.
+            </li>
+            <li>
+                [ ] Specify more information on both official and scam websites, so users can read more about them in the website.
             </li>
         </ul>
     </div>
