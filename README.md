@@ -1,20 +1,19 @@
-# steamShark
+# 🦈 steamShark
+> Version 1.0.1
 
 The script that smells steam scam websites!
 
 The core of the project is just a "database" (2 json files) that contians urls of the scamy websites and legist websites.
 
-<a href="https://franciscoborges2002.github.io/steamShark/" target="_blank">Website</a>
-
-<h1>steamShark</h1>
+You can access the <a href="https://franciscoborges2002.github.io/steamShark/" target="_blank">Website</a>.
 
 <!-- HEADER SECTION -->
 <nav>
-    <a href="#description">Description</a>
-    <a href="#howToInstall">How to Install</a>
-    <a href="#features">Features</a>
-    <a href="#howItWorks">How It Works</a>
-    <a href="#roadMap">Road Map</a>
+    <a href="#description">Description</a> |
+    <a href="#howToInstall">How to Install</a> |
+    <a href="#features">Features</a> |
+    <a href="#howItWorks">How It Works</a> |
+    <a href="#roadMap">Road Map</a> |
     <a href="#contributing">Contributing</a>
 </nav>
 
@@ -22,11 +21,11 @@ The core of the project is just a "database" (2 json files) that contians urls o
 <div id="description">
     <!-- HEADER -->
     <div>
-        <h2>Description</h2>
+        <h2>📝 Description</h2>
     </div>
     <!-- CONTENT -->
     <div>
-        steamShark is an extension to prevent scams in the steam ecosytstem
+        steamShark is an extension to prevent scams in the steam ecosytstem.
     </div>
 </div>
 
@@ -34,7 +33,7 @@ The core of the project is just a "database" (2 json files) that contians urls o
 <div id="howToInstall">
     <!-- HEADER -->
     <div>
-        <h2>How to Install</h2>
+        <h2>⬇️ How to Install</h2>
     </div>
     <!-- CONTENT -->
     <div>
@@ -75,7 +74,7 @@ And it's done!
 <div id="features">
     <!-- HEADER -->
     <div>
-        <h2>Features</h2>
+        <h2>⚙️ Features</h2>
     </div>
     <!-- CONTENT -->
     <div>
@@ -91,7 +90,7 @@ And it's done!
 <div id="howItWorks">
     <!-- HEADER -->
     <div>
-        <h2>How It Works?</h2>
+        <h2>🛠️ How It Works?</h2>
     </div>
     <!-- CONTENT -->
     <div>
@@ -106,18 +105,22 @@ And it's done!
 <div id="roadMap">
     <!-- HEADER -->
     <div>
-        <h2>Road Map</h2>
+        <h2>🛣️ Road Map</h2>
     </div>
     <!-- CONTENT -->
     <div>
         <ul>
+            <h3>Version 1.0.0</h3>
             <li>
-                [ ] Have the application ready to use.
+                [ ] Finish the application
             </li>
             <li>
                 [ ] Publish on marketplaces of extensions to people to use.
             </li>
         </ul>
+    </div>
+    <div>
+        You can see the <a href="./CHANGELOG.md">changelog</a> on github.
     </div>
 </div>
 
@@ -125,7 +128,7 @@ And it's done!
 <div id="contributing">
     <!-- HEADER -->
     <div>
-        <h2>Contributing</h2>
+        <h2>🤝 Contributing</h2>
     </div>
     <!-- CONTENT -->
     <div>
