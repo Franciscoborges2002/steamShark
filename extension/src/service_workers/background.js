@@ -5,7 +5,29 @@ chrome.runtime.onInstalled.addListener(() => {
   fetchDataAndStore();
   createHistory();
   createSettings();
+  createPermitted();
 });
+
+/*
+ * Description: Function to create the initial permitted list of the extension in storage.local
+ */
+function createPermitted() {
+  let permittedWebsites = {
+    description: "A list the permitted websites!",
+    data: {},
+  };
+  try {
+    chrome.storage.local
+      .set({ permittedWebsites: JSON.stringify(permittedWebsites) })
+      .then(() => {
+        console.log("🦈steamShark[BG Service]: permittedWebsites Storage Created.");
+      });
+  } catch (error) {
+    console.log(
+      `🦈steamShark[BG Service]: Error adding permittedWebsites in storage.\n ${error}`
+    );
+  }
+}
 
 /*
  * Description: Function to create the initial settings of the extension in storage.local
@@ -14,6 +36,8 @@ function createSettings() {
   let settings = {
     description: "A list with the settings to use in the project!",
     data: {
+      howManyTimeIgnoreScamWebsite: 300000,// How many time to ignore a scam website, default 5 minutes
+      howManyRegisterInHistory: 50,//How many items to register in history
       howManyTimeRegisterRepeatedWebsiteInHistory: 60000, // From which time to time to register a website that was already visited in history, default 60 seconds
       showPopUpInRepeatedTrustedWebsite: true, //Show pop up in a trusted website when visited in less time than of howManyTimeRegisterRepeatedWebsiteInHistory, Default true
       redirectToWarningPage: true, //Redirect to the warning page, if false makes appear a popup instaed of redirect to warning page, Default: true
@@ -234,6 +258,20 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
             settings.data.howManyTimeRegisterRepeatedWebsiteInHistory * 1000
           } minutes ago!`,
         });
+      } else if(resultHistory.data.length >= settings.data.howManyRegisterInHistory){
+        //If the list is bigger than the max amount of register, remove the last item
+
+        resultHistory.data = resultHistory.data.slice(-1);
+
+        console.log(resultHistory)
+
+        resultHistory.data.unshift({
+          url: domain,
+          visited: currentTime,
+        });
+
+        console.log(resultHistory)
+
       } else {
         //Just add the website to the list
         resultHistory.data.unshift({

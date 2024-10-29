@@ -54,11 +54,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       //Create the icons and give the needed atributes
       let imgClock = document.createElement("img");
-      imgClock.src = "../icons/clock.svg";
+      imgClock.src = "../../icons/clock.svg";
       imgClock.classList.add("icon");
 
       let imgCalendar = document.createElement("img");
-      imgCalendar.src = "../icons/calendar.svg";
+      imgCalendar.src = "../../icons/calendar.svg";
       imgCalendar.classList.add("icon");
 
       //If the items is in the trusted list

@@ -84,33 +84,33 @@ header {
   padding-bottom: 3rem;
 }
 
-.mainContent{
-    width: 100%;
+.mainContent {
+  width: 100%;
 }
 
-.options{
-    display: flex;
-    flex-direction: column;
-    gap:1rem;
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.cleanHistory{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 5px;
-    border-radius: 20px;
-    width: 200px;
-    cursor: pointer;
-    background-color: rgba(255, 100, 100, 0.6);
-    color: white;
-    transition: all 0.5s;
+.cleanHistory {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 5px;
+  border-radius: 20px;
+  width: 200px;
+  cursor: pointer;
+  background-color: rgba(255, 100, 100, 0.6);
+  color: white;
+  transition: all 0.5s;
 }
 
-.cleanHistory:hover{
-    background-color: rgba(255, 0, 0, 0.8);
+.cleanHistory:hover {
+  background-color: rgba(255, 0, 0, 0.8);
 }
 
 /* END ALL CONTENT STYLE */
@@ -204,9 +204,18 @@ header {
 
 /* FOOTER STYLE */
 footer {
+  background-color: rgba(66, 71, 105, 0.2);
+  padding-top: 20px;
+  border-top: 2px solid #424769;
+  border-right: 5px solid #424769;
+  border-left: 5px solid #424769;
   display: flex;
   flex-direction: column;
   align-content: space-around;
+  gap: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 footer .upperFooter {

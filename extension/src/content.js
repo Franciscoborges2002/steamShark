@@ -66,9 +66,16 @@ async function verifyWebsite(
     .replace("https://", "")
     .replace("/", "");
 
+  //Check if the website is localhost
+  if (urlVerify.includes("localhost")) {
+    return;
+  }
+
   //Create the objects to verify in trust list
   const urlObject = new URL(url); // Make an URL object
   const domain = urlObject.origin + "/"; // Get the origin of the url and add "/"
+
+  console.log(domain);
 
   // Verify if it's in the list of scam websites
   if (resultJSONScam.data.includes(urlVerify)) {
@@ -111,7 +118,6 @@ async function verifyWebsite(
       action: "registerHistoryStorage",
       trusted: true,
     });
-
 
     /*
      * If it is not a scam website, and is trust worthy

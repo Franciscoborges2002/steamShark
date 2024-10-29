@@ -17,8 +17,6 @@ async function setSelectValueFromSettings() {
       getStorageData("settings"),
     ]);
 
-    console.log(retulstJSONSettings);
-
     //check if storage settings exist
     if (retulstJSONSettings) {
       //Put the showPopUpInRepeatedTrustedWebsite in popup options
@@ -36,6 +34,13 @@ async function setSelectValueFromSettings() {
         retulstJSONSettings.data.howManyTimeRegisterRepeatedWebsiteInHistory /
           1000
       );
+
+      document.getElementById("howManyTimeIgnoreScamWebsite").value = Math.round(
+        retulstJSONSettings.data.howManyTimeIgnoreScamWebsite / 60000
+      );
+
+      document.getElementById("howManyRegisterInHistory").value =
+        retulstJSONSettings.data.howManyRegisterInHistory;
     } else {
       console.warn("🦈steamShark[Options]: Settings not found in storage.");
     }
@@ -77,12 +82,19 @@ document.getElementById("saveBtn").addEventListener("click", async function () {
     const howManyTimeRegisterRepeatedWebsiteInHistory =
       document.getElementById("howManyTimeRegisterRepeatedWebsiteInHistory")
         .value * 1000;
-    console.log(typeof howManyTimeRegisterRepeatedWebsiteInHistory);
+
+    const howManyRegisterInHistory =
+      document.getElementById("howManyRegisterInHistory").value;
+
+      const howManyTimeIgnoreScamWebsite = 
+      document.getElementById("howManyTimeIgnoreScamWebsite").value * 60000;
 
     //create the new object, with the settings
     let settings = {
       description: "A list with the settings to use in the project!",
       data: {
+        howManyTimeIgnoreScamWebsite: howManyTimeIgnoreScamWebsite,
+        howManyRegisterInHistory: howManyRegisterInHistory,
         howManyTimeRegisterRepeatedWebsiteInHistory:
           howManyTimeRegisterRepeatedWebsiteInHistory, // From which time to time to register a website that was already visited in history, default 5 mins
         showPopUpInRepeatedTrustedWebsite: showPopUpInRepeatedTrustedWebsite, //Show pop up in a trusted website when visited in less time than of howManyTimeRegisterRepeatedWebsiteInHistory, Default true

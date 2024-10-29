@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦈steamShark - Options</title>
+    <title>🦈steamShark - Settings</title>
     <link rel="stylesheet" href="./styles/settings.css">
 </head>
 
@@ -16,7 +16,7 @@
                 <a href="https://franciscoborges2002.github.io/steamShark/" class="logo">🦈steamShark</a>
                 <nav>
                     <a class="current">
-                        Options
+                        Settings
                     </a>
                     <a href="chrome-extension://kklbgdgiockjcadlcgajdafpiabcneig/src/pages/history.html">
                         History
@@ -48,7 +48,7 @@
                             <div class="optionText">
                                 <p>Always Show popUp</p>
                                 <div class="iconToolTip">
-                                    <img src="../icons/info.svg" width="20px" height="20px" id="infoIcon"
+                                    <img src="../../icons/info.svg" width="20px" height="20px" id="infoIcon"
                                         alt="Info Icon" />
                                     <!-- Hidden div for the tooltip -->
                                     <div id="tooltip" style="display: none;">
@@ -71,7 +71,7 @@
                         <h2>Scam Website Options:</h2>
                     </div>
                     <!-- CONTENT SCAM WEB PAGE OPTIONS -->
-                    <div class="optionContent">
+                    <div class="optionContent scamSettings">
                         <div class="optionTextSelect">
                             <div class="optionText">
                                 <p>Only show popup</p>
@@ -82,8 +82,12 @@
                                 </label>
 
                                 <p>Redirect to a warning page</p>
-
                             </div>
+                        </div>
+                        <div class="optionText">
+                            <p>How Many time ignore scam website</p>
+                            <input type="number" min="0" id="howManyTimeIgnoreScamWebsite" />
+                            <p>minutes!</p>
                         </div>
                     </div>
                 </div>
@@ -96,10 +100,15 @@
                     </div>
                     <!-- CONTENT HISTORY OPTIONS -->
                     <div class="optionContent">
-                        <div class="optionTextSelect">
-                            <div class="optionText optionTextHistory">
+                        <div class="optionTextSelect historySettings">
+                            <div class="optionText">
                                 <p>How much time to register in history</p>
                                 <input type="number" min="0" id="howManyTimeRegisterRepeatedWebsiteInHistory" />
+                                <p>seconds!</p>
+                            </div>
+                            <div class="optionText historyLength">
+                                <p>History Length</p>
+                                <input type="number" min="0" id="howManyRegisterInHistory" />
                             </div>
                         </div>
                     </div>
