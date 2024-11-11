@@ -32,21 +32,21 @@
         <!-- CONTENT SECTION -->
         <div class="content">
             <div class="contentHeader">
-                <h2>Options</h2>
+                <h2>Settings</h2>
             </div>
 
-            <div class="allOptions">
-                <!-- POPUP OPTIONS -->
-                <div class="option">
-                    <!-- HEADER POPUP OPTIONS -->
-                    <div class="optionHeader">
-                        <h2>Popup Options:</h2>
+            <div class="allSettings">
+                <!-- POPUP SETTINGS -->
+                <div class="setting">
+                    <!-- HEADER POPUP SETTINGS -->
+                    <div class="settingHeader">
+                        <h2>Popup Settings:</h2>
                     </div>
-                    <!-- CONTENT POPUP OPTIONS -->
-                    <div class="optionContent">
-                        <div class="optionTextSelect">
-                            <div class="optionText">
-                                <p>Always Show popUp</p>
+                    <!-- CONTENT POPUP SETTINGS -->
+                    <div class="settingContent">
+                        <div class="settingTextSelect">
+                            <div class="settingText">
+                                <p>Always show popup when is a trusted website</p>
                                 <div class="iconToolTip">
                                     <img src="../../icons/info.svg" width="20px" height="20px" id="infoIcon"
                                         alt="Info Icon" />
@@ -61,19 +61,49 @@
                                 <option value="false">No</option>
                             </select>
                         </div>
+                        <div class="settingTextSelect">
+                            <div class="settingText">
+                                <p>Popup position</p>
+                                <div class="iconToolTip">
+                                    <img src="../../icons/info.svg" width="20px" height="20px" id="infoIcon"
+                                        alt="Info Icon" />
+                                    <!-- Hidden div for the tooltip -->
+                                    <div id="tooltip" style="display: none;">
+                                        Where to locate the popup in the page!
+                                    </div>
+                                </div>
+                            </div>
+                            <select name="locationPopup" id="whereToLocatePopup">
+                                <optgroup label="Top">
+                                    <option value="tr">Right (top)</option>
+                                    <option value="tl">Left (top)</option>
+                                </optgroup>
+                                <optgroup label="Bottom">
+                                    <option value="br">Right (bottom)</option>
+                                    <option value="bl">Left (bottom)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="settingTextSelect">
+                            <div class="settingText">
+                                <p>How much time to show popup</p>
+                                <input type="number" min="0" id="howManyTimeShowPopup" />
+                                <p>seconds!</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- SCAM WEB PAGE OPTIONS -->
-                <div class="option">
-                    <!-- HEADER SCAM WEB PAGE OPTIONS -->
-                    <div class="optionHeader">
-                        <h2>Scam Website Options:</h2>
+                <!-- SCAM WEB PAGE SETTINGS -->
+                <div class="setting">
+                    <!-- HEADER SCAM WEB PAGE SETTINGS -->
+                    <div class="settingHeader">
+                        <h2>Scam Website Settings:</h2>
                     </div>
-                    <!-- CONTENT SCAM WEB PAGE OPTIONS -->
-                    <div class="optionContent scamSettings">
-                        <div class="optionTextSelect">
-                            <div class="optionText">
+                    <!-- CONTENT SCAM WEB PAGE SETTINGS -->
+                    <div class="settingContent scamSettings">
+                        <div class="settingTextSelect">
+                            <div class="settingText">
                                 <p>Only show popup</p>
 
                                 <label class="switch">
@@ -84,7 +114,7 @@
                                 <p>Redirect to a warning page</p>
                             </div>
                         </div>
-                        <div class="optionText">
+                        <div class="settingText">
                             <p>How Many time ignore scam website</p>
                             <input type="number" min="0" id="howManyTimeIgnoreScamWebsite" />
                             <p>minutes!</p>
@@ -92,30 +122,31 @@
                     </div>
                 </div>
 
-                <!-- HISTORY OPTIONS -->
-                <div class="option">
-                    <!-- HEADER HISTORY OPTIONS -->
-                    <div class="optionHeader">
-                        <h2>History Options:</h2>
+                <!-- HISTORY SETTINGS -->
+                <div class="setting">
+                    <!-- HEADER HISTORY SETTINGS -->
+                    <div class="settingHeader">
+                        <h2>History Settings:</h2>
                     </div>
-                    <!-- CONTENT HISTORY OPTIONS -->
-                    <div class="optionContent">
-                        <div class="optionTextSelect historySettings">
-                            <div class="optionText">
+                    <!-- CONTENT HISTORY SETTINGS -->
+                    <div class="settingContent">
+                        <div class="historySettings">
+                            <div class="settingText">
                                 <p>How much time to register in history</p>
                                 <input type="number" min="0" id="howManyTimeRegisterRepeatedWebsiteInHistory" />
                                 <p>seconds!</p>
                             </div>
-                            <div class="optionText historyLength">
+                            <div class="settingText historyLength">
                                 <p>History Length</p>
                                 <input type="number" min="0" id="howManyRegisterInHistory" />
+                                <p>items!</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <!-- SSAVE BUTTON -->
+            <!-- SAVE BUTTON -->
             <div class="saveSection">
                 <button class="saveBtn" id="saveBtn">SAVE</button>
             </div>

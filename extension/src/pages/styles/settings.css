@@ -106,30 +106,41 @@ header {
 
 /* END ALL CONTENT STYLE */
 
-.allOptions {
+.allSettings {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   align-items: start;
 }
 
-.option {
+.setting {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   /* width: 50%; */
 }
 
-.optionContent {
-  width: 100%;
+.settingContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   padding-left: 10px;
 }
 
-.optionText {
+.settingText {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 0.5rem;
+}
+
+select {
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  padding-left: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .historySettings {
@@ -146,7 +157,8 @@ header {
 
 #howManyTimeRegisterRepeatedWebsiteInHistory,
 #howManyRegisterInHistory,
-#howManyTimeIgnoreScamWebsite {
+#howManyTimeIgnoreScamWebsite,
+#howManyTimeShowPopup {
   border-radius: 20px;
   border: 1px solid #ccc;
   padding: 5px;
@@ -191,6 +203,14 @@ header {
 /*  #infoIcon:hover+#tooltip {
     opacity: 1;
 } */
+
+.settingTextSelect {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
 
 /* TOGGLE */
 .switch {

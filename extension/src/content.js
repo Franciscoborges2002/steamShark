@@ -36,7 +36,7 @@ async function getValues() {
     ];
   } catch (error) {
     console.error("Error retrieving data:", error);
-    injectPopup("error", "getting the data from storage");
+    injectPopup("error", "getting the data from storage", null);
   }
 }
 
@@ -123,8 +123,12 @@ async function verifyWebsite(
      * If it is not a scam website, and is trust worthy
      * Before injecting the html, lets check if its in the last x minutes(get in options) of the history
      */
-
-    injectPopup(true, domain);
+    injectPopup(true, domain, {
+      whereToLocatePopup: resultJSONsettings.data.whereToLocatePopup,
+      showPopUpInRepeatedTrustedWebsite:
+        resultJSONsettings.data.showPopUpInRepeatedTrustedWebsite,
+      howManyTimeShowPopup: resultJSONsettings.data.howManyTimeShowPopup,
+    });
 
     //Return from the function
     return;
@@ -152,21 +156,28 @@ start();
 /*
 Function to inject a popup in the page
 */
-function injectPopup(succeded, textAdd) {
+function injectPopup(succeded, textAdd, popupSettings) {
+  //If user doesnt want to show the popup
+  if (!popupSettings.showPopUpInRepeatedTrustedWebsite) {
+    return;
+  }
+
   const body = document.querySelector("body");
   const newDiv = document.createElement("div");
   const closeButton = document.createElement("button"); //button to make it disappear
 
+  console.log(popupSettings);
+
   switch (succeded) {
-    case true:
+    case true: //If succeded
       newDiv.innerHTML = `<h5>🦈 ${textAdd} is trusted!</h5>`;
       newDiv.style.backgroundColor = "rgba(11,156,49,0.85)";
       break;
-    case false:
+    case false: //In case user wants popup instaed of redirecting to warning page
       newDiv.innerHTML = `<h5>🦈 ${textAdd} is NOT trusted!</h5>`;
       newDiv.style.backgroundColor = "rgba(255,3,3,0.85)";
       break;
-    case "error":
+    case "error": //If one error occurred
       newDiv.innerHTML = `<h5>🦈steamShark An error occurred while trying to ${textAdd}.</h5>`;
       newDiv.style.backgroundColor = "rgba(255,165,0,0.85)";
       break;
@@ -191,12 +202,11 @@ function injectPopup(succeded, textAdd) {
     newDiv.remove(); // Remove the popup when the button is clicked
   });
 
-  newDiv.appendChild(closeButton); // Append the button to the newDiv
+  // Append the button to the newDiv
+  newDiv.appendChild(closeButton);
 
   //Div style
   newDiv.style.position = "fixed"; // Added this line
-  newDiv.style.top = "4rem";
-  newDiv.style.right = "1rem";
   newDiv.style.zIndex = "9999"; // Increased z-index
   newDiv.style.padding = "1rem"; // Add padding around the content
   newDiv.style.display = "flex";
@@ -211,6 +221,31 @@ function injectPopup(succeded, textAdd) {
   newDiv.style.flexDirection = "row";
   newDiv.style.alignItems = "center";
 
+  /* Change the position of the popup */
+  switch (popupSettings.whereToLocatePopup) {
+    case "tr":
+      newDiv.style.top = "4rem";
+      newDiv.style.right = "1rem";
+      break;
+    case "tl":
+      newDiv.style.top = "4rem";
+      newDiv.style.left = "1rem";
+      break;
+    case "br":
+      newDiv.style.bottom = "4rem";
+      newDiv.style.right = "1rem";
+      break;
+    case "bl":
+      newDiv.style.bottom = "4rem";
+      newDiv.style.left = "1rem";
+      break;
+    default:
+      newDiv.style.top = "4rem";
+      newDiv.style.right = "1rem";
+      break;
+  }
+
+  //Append the popup in the page
   body.insertAdjacentElement("beforebegin", newDiv);
 
   // Schedule the div to be removed after 10 seconds
@@ -219,5 +254,5 @@ function injectPopup(succeded, textAdd) {
     if (popupToRemove) {
       popupToRemove.remove();
     }
-  }, 10000); // 10000 milliseconds = 10 seconds
+  }, popupSettings.howManyTimeShowPopup); // 10000 milliseconds = 10 seconds
 }

@@ -40,6 +40,8 @@ function createSettings() {
       howManyRegisterInHistory: 50,//How many items to register in history
       howManyTimeRegisterRepeatedWebsiteInHistory: 60000, // From which time to time to register a website that was already visited in history, default 60 seconds
       showPopUpInRepeatedTrustedWebsite: true, //Show pop up in a trusted website when visited in less time than of howManyTimeRegisterRepeatedWebsiteInHistory, Default true
+      whereToLocatePopup: "tr", //Where to locate the popup, default tr - Top Right. bl - Bottom left
+      howManyTimeShowPopup: 10000, // How many time to show the popup, default 10 seconds
       redirectToWarningPage: true, //Redirect to the warning page, if false makes appear a popup instaed of redirect to warning page, Default: true
     },
   };

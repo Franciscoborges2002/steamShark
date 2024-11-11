@@ -35,12 +35,21 @@ async function setSelectValueFromSettings() {
           1000
       );
 
-      document.getElementById("howManyTimeIgnoreScamWebsite").value = Math.round(
-        retulstJSONSettings.data.howManyTimeIgnoreScamWebsite / 60000
-      );
+      document.getElementById("howManyTimeIgnoreScamWebsite").value =
+        Math.round(
+          retulstJSONSettings.data.howManyTimeIgnoreScamWebsite / 60000
+        );
 
       document.getElementById("howManyRegisterInHistory").value =
         retulstJSONSettings.data.howManyRegisterInHistory;
+
+      document.getElementById("whereToLocatePopup").value =
+        retulstJSONSettings.data.whereToLocatePopup;
+
+      console.log(retulstJSONSettings.data);
+
+      document.getElementById("howManyTimeShowPopup").value =
+        retulstJSONSettings.data.howManyTimeShowPopup / 1000;
     } else {
       console.warn("🦈steamShark[Options]: Settings not found in storage.");
     }
@@ -83,22 +92,32 @@ document.getElementById("saveBtn").addEventListener("click", async function () {
       document.getElementById("howManyTimeRegisterRepeatedWebsiteInHistory")
         .value * 1000;
 
-    const howManyRegisterInHistory =
-      document.getElementById("howManyRegisterInHistory").value;
+    const howManyRegisterInHistory = document.getElementById(
+      "howManyRegisterInHistory"
+    ).value;
 
-      const howManyTimeIgnoreScamWebsite = 
+    const howManyTimeIgnoreScamWebsite =
       document.getElementById("howManyTimeIgnoreScamWebsite").value * 60000;
+
+    const whereToLocatePopup =
+      document.getElementById("whereToLocatePopup").value;
+
+    const howManyTimeShowPopup =
+      document.getElementById("howManyTimeShowPopup").value * 1000;
+    console.log(howManyTimeShowPopup);
 
     //create the new object, with the settings
     let settings = {
       description: "A list with the settings to use in the project!",
       data: {
-        howManyTimeIgnoreScamWebsite: howManyTimeIgnoreScamWebsite,
-        howManyRegisterInHistory: howManyRegisterInHistory,
+        howManyTimeIgnoreScamWebsite: howManyTimeIgnoreScamWebsite, // How many time to ignore a scam website, default 5 minutes
+        howManyRegisterInHistory: howManyRegisterInHistory, // How many items to register
         howManyTimeRegisterRepeatedWebsiteInHistory:
           howManyTimeRegisterRepeatedWebsiteInHistory, // From which time to time to register a website that was already visited in history, default 5 mins
         showPopUpInRepeatedTrustedWebsite: showPopUpInRepeatedTrustedWebsite, //Show pop up in a trusted website when visited in less time than of howManyTimeRegisterRepeatedWebsiteInHistory, Default true
         redirectToWarningPage: redirectToWarningPage, //Redirect to the warning page, if false makes appear a popup instaed of redirect to warning page, Default: true
+        howManyTimeShowPopup: howManyTimeShowPopup, // How many time to show the popup
+        whereToLocatePopup: whereToLocatePopup, // Where to locate the popup
       },
     };
 
