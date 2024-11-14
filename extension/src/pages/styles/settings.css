@@ -273,6 +273,39 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+#reloadBtn img {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+#reloadBtn {
+  width: 5vw;
+  background-color: #424769;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reloadItems{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.reloadItems p{
+  font-size: large;
+}
+
 /* SAVE BUTTON STYLE */
 .saveBtn {
   width: 20vw;
@@ -288,12 +321,14 @@ input:checked + .slider:before {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.saveBtn:hover {
+.saveBtn:hover,
+#reloadBtn:hover {
   background-color: #5a5e8d;
   transform: scale(1.05);
 }
 
-.saveBtn:active {
+.saveBtn:active,
+#reloadBtn:active {
   background-color: #373c60;
   transform: scale(0.98);
 }

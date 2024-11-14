@@ -18,11 +18,13 @@ async function getValues() {
       resultJSONScam,
       resultJSONhistory,
       resultJSONsettings,
+      resultJSONpermittedWebsites,
     ] = await Promise.all([
       getStorageData("trustWebsites"),
       getStorageData("scamWebsites"),
       getStorageData("historyWebsites"),
       getStorageData("settings"),
+      getStorageData("permittedWebsites"),
     ]);
 
     /* throw new Error("errrroororr"); */
@@ -33,10 +35,16 @@ async function getValues() {
       resultJSONScam,
       resultJSONhistory,
       resultJSONsettings,
+      resultJSONpermittedWebsites,
     ];
   } catch (error) {
     console.error("Error retrieving data:", error);
-    injectPopup("error", "getting the data from storage", null);
+    injectPopup("error", "getting the data from storage", {
+      whereToLocatePopup: resultJSONsettings.data.whereToLocatePopup,
+      showPopUpInRepeatedTrustedWebsite:
+        resultJSONsettings.data.showPopUpInRepeatedTrustedWebsite,
+      howManyTimeShowPopup: resultJSONsettings.data.howManyTimeShowPopup,
+    });
   }
 }
 
@@ -45,12 +53,14 @@ async function verifyWebsite(
   resultJSONTrust,
   resultJSONScam,
   resultJSONhistory,
-  resultJSONsettings
+  resultJSONsettings,
+  resultJSONpermittedWebsites
 ) {
   console.log(resultJSONScam); // This will log the data once it's available
   console.log(resultJSONTrust); // This will log the data once it's available
   console.log(resultJSONhistory); // This will log the data once it's available
   console.log(resultJSONsettings); // This will log the data once it's available
+  console.log(resultJSONpermittedWebsites); // This will log the data once it's available
 
   console.log("🦈steamShark started!"); //Just to register what ASteamShark did on console
 
@@ -88,17 +98,40 @@ async function verifyWebsite(
       trusted: false,
     });
 
-    //Check if is to redirect or only show popUp
-    if (resultJSONsettings.data.redirectToWarningPage) {
-      console.log("🦈steamShark: Redirecting to warning page!"); //Just to register what ASteamShark did on console
+    // Check if urlVerify is inside resultJSONpermittedWebsites
+    const isPermitted =
+      Array.isArray(resultJSONpermittedWebsites.data) &&
+      resultJSONpermittedWebsites.data.some(
+        (item) => item.url.toLowerCase() === urlVerify.toLowerCase()
+      );
 
-      const response = await chrome.runtime.sendMessage({
-        action: "redirectWarningPage",
-      });
-    } else {
-      //Only show popUp
-      console.log("🦈steamShark: Show scam popup!");
-      injectPopup(false, domain);
+    //If its permitted, check if time hasnt expired
+    if(isPermitted){
+
+    }
+
+    //verify if its not in permitted list
+    if (!isPermitted) {
+      // Check if we should redirect or only show popUp
+      if (resultJSONsettings.data.redirectToWarningPage) {
+        //Check if is to redirect or only show popUp
+        console.log("🦈steamShark: Redirecting to warning page!"); //Just to register what ASteamShark did on console
+
+        const response = await chrome.runtime.sendMessage({
+          action: "redirectWarningPage",
+        });
+
+        return;
+      } else {
+        //Only show popUp
+        console.log("🦈steamShark: Show scam popup!");
+        injectPopup(false, domain, {
+          whereToLocatePopup: resultJSONsettings.data.whereToLocatePopup,
+          showPopUpInRepeatedTrustedWebsite:
+            resultJSONsettings.data.showPopUpInRepeatedTrustedWebsite,
+          howManyTimeShowPopup: resultJSONsettings.data.howManyTimeShowPopup,
+        });
+      }
     }
 
     //Return from the function
@@ -144,7 +177,7 @@ async function start() {
   try {
     const data = await getValues();
 
-    verifyWebsite(data[0], data[1], data[2], data[3]);
+    verifyWebsite(data[0], data[1], data[2], data[3], data[4]);
   } catch (error) {
     console.error("Error retrieving data: ", error);
   }

@@ -1,4 +1,5 @@
 # 🦈 steamShark
+
 > Version 1.0.1
 
 The script that smells steam scam websites!
@@ -39,16 +40,16 @@ You can access the <a href="https://franciscoborges2002.github.io/steamShark/" t
     <div>
         You can either choose to install via:
         <ul>
-            <li><a href="#installTampermonkey">Tampermonkey</a></li>
-            <li><a href="#installExtension">Entension</a></li>
+            <!-- <li><a href="#installTampermonkey">Tampermonkey</a></li> -->
+            <li><a href="#installExtension">Extension</a></li>
         </ul>
 
-<div id="installTampermonkey">
+<!-- <div id="installTampermonkey">
 <h3>Tampermonkey</h3>
 
 ### Pre-requesites
 
-Have Tampermonkey installed, you can download it through the [official website](https://www.tampermonkey.net/).
+Have Tampermonkey installed, you can download it through the [official website](https://www.tampermonkey.net/). -->
 
 ### Installing the script
 
@@ -60,7 +61,7 @@ You just need to install it via tampermonkey
 <h3>Extension</h3>
 
 You just need to go to the following page and add the extension to your web browser
-[ASteamShark](https://www.google.com).
+[steamShark](https://www.google.com).
 
 </div>
 
@@ -112,7 +113,7 @@ And it's done!
         <ul>
             <h3>Current version 1.0.1</h3>
             <li>
-                [ ] Finish the application
+                [x] Finish the base application
             </li>
             <li>
                 [ ] Publish on marketplaces of extensions to people to use.

@@ -141,10 +141,24 @@ document.getElementById("saveBtn").addEventListener("click", async function () {
   }
 });
 
+document
+  .getElementById("reloadBtn")
+  .addEventListener("click", async function () {
+    try {
+      //Make call to background js to fetch data
+      chrome.runtime.sendMessage({ action: "fetchData" });
+    } catch (error) {
+      console.error(
+        `🦈steamShark[Options]: Error saving settings to localStorage: ${error}`
+      );
+    }
+  });
+
 function injectPopup(succeded) {
   const body = document.querySelector("body");
   const newDiv = document.createElement("div");
   const closeButton = document.createElement("button"); //button to make it disappear
+
   if (succeded) {
     //Add the text
     newDiv.innerHTML = "<h5>🦈steamShark Settings saved!</h5>";

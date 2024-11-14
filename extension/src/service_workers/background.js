@@ -14,13 +14,15 @@ chrome.runtime.onInstalled.addListener(() => {
 function createPermitted() {
   let permittedWebsites = {
     description: "A list the permitted websites!",
-    data: {},
+    data: [],
   };
   try {
     chrome.storage.local
       .set({ permittedWebsites: JSON.stringify(permittedWebsites) })
       .then(() => {
-        console.log("🦈steamShark[BG Service]: permittedWebsites Storage Created.");
+        console.log(
+          "🦈steamShark[BG Service]: permittedWebsites Storage Created."
+        );
       });
   } catch (error) {
     console.log(
@@ -36,8 +38,8 @@ function createSettings() {
   let settings = {
     description: "A list with the settings to use in the project!",
     data: {
-      howManyTimeIgnoreScamWebsite: 300000,// How many time to ignore a scam website, default 5 minutes
-      howManyRegisterInHistory: 50,//How many items to register in history
+      howManyTimeIgnoreScamWebsite: 300000, // How many time to ignore a scam website, default 5 minutes
+      howManyRegisterInHistory: 50, //How many items to register in history
       howManyTimeRegisterRepeatedWebsiteInHistory: 60000, // From which time to time to register a website that was already visited in history, default 60 seconds
       showPopUpInRepeatedTrustedWebsite: true, //Show pop up in a trusted website when visited in less time than of howManyTimeRegisterRepeatedWebsiteInHistory, Default true
       whereToLocatePopup: "tr", //Where to locate the popup, default tr - Top Right. bl - Bottom left
@@ -201,8 +203,6 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
       );
     }
 
-    console.log(settings.data.howManyTimeRegisterRepeatedWebsiteInHistory);
-
     //There is nothing on the list create a new one and save it
     if (resultHistory === undefined) {
       console.log(`🦈steamShark[BG Service]: There is no history, creating.`);
@@ -260,20 +260,21 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
             settings.data.howManyTimeRegisterRepeatedWebsiteInHistory * 1000
           } minutes ago!`,
         });
-      } else if(resultHistory.data.length >= settings.data.howManyRegisterInHistory){
+      } else if (
+        resultHistory.data.length >= settings.data.howManyRegisterInHistory
+      ) {
         //If the list is bigger than the max amount of register, remove the last item
 
         resultHistory.data = resultHistory.data.slice(-1);
 
-        console.log(resultHistory)
+        console.log(resultHistory);
 
         resultHistory.data.unshift({
           url: domain,
           visited: currentTime,
         });
 
-        console.log(resultHistory)
-
+        console.log(resultHistory);
       } else {
         //Just add the website to the list
         resultHistory.data.unshift({
