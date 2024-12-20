@@ -1,10 +1,21 @@
-# 🦈 steamShark
+<h1 align='center'>
+  🦈steamShark
+</h1>
 
-> Version 1.0.0
+<h3 align='center'>
+  The script that smells scam websites!
+</h3>
 
-The script that smells scam websites!
-
+<p align='center'>
 You can access the <a href="https://franciscoborges2002.github.io/steamShark/" target="_blank">Website</a>.
+</p>
+
+<p align='center'>
+  <a href="https://github.com/sponsors/alexandresanlim"><img alt="version" src="https://img.shields.io/badge/Version-1.0.0-blue" /></a>
+  &nbsp;
+  <a href="https://github.com/sponsors/alexandresanlim"><img alt="Sponsor" src="https://img.shields.io/badge/Opensource-green" /></a>
+</p>
+<br />
 
 <!-- HEADER SECTION -->
 <nav>
