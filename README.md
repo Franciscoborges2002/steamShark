@@ -1,10 +1,8 @@
 # 🦈 steamShark
 
-> Version 1.0.1
+> Version 1.0.0
 
-The script that smells steam scam websites!
-
-The core of the project is just a "database" (2 json files) that contians urls of the scamy websites and legist websites.
+The script that smells scam websites!
 
 You can access the <a href="https://franciscoborges2002.github.io/steamShark/" target="_blank">Website</a>.
 
