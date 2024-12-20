@@ -14,8 +14,13 @@
     <div class="flex flex-col gap-10">
         <!-- HEADER -->
         <header class="w-full flex justify-between px-5 items-center bg-[#424769] p-3">
-            <div>
+            <div class="flex flex-row items-center gap-10">
                 <p class="text-xl font-bold">🦈steamShark</p>
+                <nav>
+                    <a href="/changelog.html">
+                        Changelog
+                    </a>
+                </nav>
             </div>
             <div>
                 <a href="https://github.com/Franciscoborges2002/ASteamShark" target="_blank"
@@ -24,10 +29,21 @@
         </header>
 
         <!-- HERO SECTION -->
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center gap-1">
             <p class="text-3xl">🦈</p>
             <h1 class="font-bold text-6xl">Steam Shark</h1>
             <p class="font-semibold text-2xl">The tool that smells scam websites!</p>
+            <!-- BADGES -->
+            <div class="flex flex-row gap-2 items-center pt-5">
+                <span
+                    class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                    Version 1.0.0
+                </span>
+                <span
+                    class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                    Opensource
+                </span>
+            </div>
         </div>
 
         <!-- ABOUT SECTION -->
@@ -105,17 +121,44 @@
             </div>
             <!-- CONTENT -->
             <div>
-                <p class="pl-10">Everyone is more than welcome to contribute to the project, but for an
-                    organized participation, it's
-                    important to read the <a
-                        class="transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline"
-                        href="https://github.com/Franciscoborges2002/steamShark/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>
-                    before doing it!</p>
+                <p class="pl-10">
+                    Everyone is more than welcome to contribute to the project, but for an organized participation,
+                    it's important to read the
+                    <a class="transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline"
+                        href="https://github.com/Franciscoborges2002/steamShark/blob/main/CONTRIBUTING.md">
+                        CONTRIBUTING.md
+                    </a>
+                    before doing it!
+                </p>
+            </div>
+        </div>
+
+        <!-- CHANGELOG SECTION -->
+        <div div class="flex flex-col px-5" id="contributing">
+            <!-- HEADER -->
+            <div>
+                <h2 class="font-bold text-3xl">Changelog</h2>
+            </div>
+            <!-- CONTENT -->
+            <div>
+                <p class="pl-10">
+                    You can see the changes in the project in
+                    <a class="transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline"
+                        href="/changelog.html">
+                        /changelog.html
+                    </a>
+                    or in
+                    <a class="transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline"
+                        href="https://github.com/Franciscoborges2002/steamShark/blob/main/CHANGELOG.md">
+                        CHANGELOG.md
+                    </a>
+                    .
+                </p>
             </div>
         </div>
 
         <!-- FOOTER SECTION -->
-        <footer class="flex flex-col items-center  justify-around">
+        <footer class="w-full">
             <!-- UPPER SECTION -->
             <div class="flex flex-row gap-5 px-5">
                 <!-- FIRST SECTION -->
@@ -149,8 +192,11 @@
             <!-- BOTTOM SECTION -->
             <div class="flex justify-center items-center bg-[#424769] p-3">
                 <p>Made with ❤️ and ☕ by <a href="https://github.com/Franciscoborges2002"
-                        class="font-medium transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline">Francisco
-                        Borges</a>.</p>
+                        class="font-medium transition-all delay-50 text-purple-500 hover:text-purple-600 hover:underline">
+                        Francisco Borges
+                    </a>
+                    .
+                </p>
             </div>
         </footer>
     </div>
