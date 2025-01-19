@@ -62,7 +62,7 @@ Have Tampermonkey installed, you can download it through the [official website](
 
 ### Installing the script
 
-You just need to install it via tampermonkey
+<!-- You just need to install it via tampermonkey -->
 
 </div>
 
