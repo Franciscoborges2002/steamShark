@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.light {
+  --background: 238, 238, 238;
+  --background-overlay: 200, 200, 200;
+  --background-card: 255, 255, 255;
+  --background-header: 100, 107, 144;
+  --background-footer: 100, 107, 144;
+  --background-footer-bottom: 66, 71, 105;
+
+  --buton-primary-header: 73, 81, 121;
+
+  --text-primary: 0, 0, 0;
+  --text-secondary: 15, 23, 42;
+  --text-third: 203, 213, 225;
+  --text-oposite: 255, 255, 255;
+
+  background: rgba(var(--background));
+}
+
+.dark {
+  --background: 45, 50, 80;
+  --background-overlay: 30, 41, 59;
+  --background-card: 100, 108, 117;
+  --background-header: 66, 71, 105;
+  --background-footer: 66, 71, 105;
+  --background-footer-bottom: 45, 50, 80;
+
+  ---buton-primary-header: 255,255,255;
+
+  --text-primary: 255, 255, 255;
+  --text-secondary: 129, 140, 248;
+  --text-third: 203, 213, 225;
+  --text-oposite: 0, 0, 0;
+
+  background: rgba(var(--background));
+}
