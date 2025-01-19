@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/steamShark/static/css/main.f4dddf33.css",
+    "main.js": "/steamShark/static/js/main.fa0d4cc3.js",
+    "index.html": "/steamShark/index.html",
+    "main.f4dddf33.css.map": "/steamShark/static/css/main.f4dddf33.css.map",
+    "main.fa0d4cc3.js.map": "/steamShark/static/js/main.fa0d4cc3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f4dddf33.css",
+    "static/js/main.fa0d4cc3.js"
+  ]
+}
