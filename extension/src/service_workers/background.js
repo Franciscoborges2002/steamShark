@@ -21,12 +21,12 @@ function createPermitted() {
       .set({ permittedWebsites: JSON.stringify(permittedWebsites) })
       .then(() => {
         console.log(
-          "🦈steamShark[BG Service]: permittedWebsites Storage Created."
+          "🦈steamShark[BG Service]: permitted Websites Storage Created."
         );
       });
   } catch (error) {
     console.log(
-      `🦈steamShark[BG Service]: Error adding permittedWebsites in storage.\n ${error}`
+      `🦈steamShark[BG Service]: Error adding permitted Websites in storage.\n ${error}`
     );
   }
 }
