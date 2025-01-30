@@ -18,8 +18,8 @@ root.render(
           <Header />
           <main className="p-4">
             <Routes>
-              <Route path="/" element={<IndexPage />} /> {/* Index route */}
-              <Route path="/changelog" element={<ChangelogPage />} />{/* Changelog page */}
+              <Route path="/steamShark/" element={<IndexPage />} /> {/* Index route */}
+              <Route path="/steamShark/changelog" element={<ChangelogPage />} />{/* Changelog page */}
             </Routes>
           </main>
           <Footer />

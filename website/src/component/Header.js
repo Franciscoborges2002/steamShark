@@ -6,12 +6,12 @@ function Header() {
   return (
     <header className="bg-bg-header w-full text-white flex justify-between px-5 items-center mb-5">
       <div className="flex flex-row items-center gap-10">
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/steamShark" className="text-xl font-bold">
           🦈steamShark
         </Link>
         <nav className="flex flex-row gap-3">
-          <Link to="/">Home</Link>
-          <Link to="/changelog">Changelog</Link>
+          <Link to="/steamShark">Home</Link>
+          <Link to="/steamShark/changelog">Changelog</Link>
         </nav>
       </div>
       <div className="flex flex-row items-center">
