@@ -36,6 +36,10 @@
         {
             "url": "https://csfloat.com/",
             "description": "Most wellknown database website in CS2!"
+        },
+        {
+            "url": "https://www.counter-strike.net/",
+            "description": "Official counter-strike 2 website!"
         }
     ]
 }
