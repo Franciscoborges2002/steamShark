@@ -10,7 +10,7 @@
       "matches": ["<all_urls>"]
     }
   ],
-  "permissions": ["webNavigation", "activeTab", "storage", "sidePanel"],
+  "permissions": ["activeTab", "storage"],
   "background": {
     "service_worker": "./src/service_workers/background.js"
   },

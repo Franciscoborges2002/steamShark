@@ -147,8 +147,8 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
    * Description: redirect the user to the scam alert page in extension
    */
   if (request.action === "redirectWarningPage") {
-    // Assuming the extension ID is known and static, replace 'YOUR_EXTENSION_ID' with the actual ID
-    const extensionId = "kklbgdgiockjcadlcgajdafpiabcneig";
+    // Get the extension id
+    const extensionId = chrome.runtime.id;
     const warningPageUrl = `chrome-extension://${extensionId}/src/warning.html`;
 
     // Update the tab's URL to navigate to the warning page
