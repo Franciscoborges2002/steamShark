@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "🦈SteamShark",
   "version": "1.0.0",
-  "description": "Steam shark is an extension that veryfies if the page you're getting is a scam website or not.",
+  "description": "Steam shark is an extension that verifies if the page you're getting is a scam website or not.",
   "author": "Francisco Borges",
   "content_scripts": [
     {
