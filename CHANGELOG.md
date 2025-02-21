@@ -5,7 +5,7 @@
     <a href="#v1.0.1">v1.0.1</a> 
 </nav>
 
-## Version 1.0.1 - Sharpening it <a id="v1.0.1"></a>
+## Version 1.1.0 - Sharpening it <a id="v1.0.1"></a>
 - [x] Make the static website and deploy to github pages.
 - [x] Make the popup for the extension.
 - [x] Have an history page, so the usaer can see the websites he visited related to the extension.
@@ -14,6 +14,9 @@
 - [x] User has the option to show a popup instaed of redirecting.
 - [ ] Deploy the extension to the google extensions.
 - [ ] Let users download the essential files and make the setup for themselves.
+
+## Version 1.0.1 - Sharpening it <a id="v1.0.1"></a>
+- [x] Altered the way popup gets the chrome extension
 
 ## Version 1.0.0 - Begin <a id="v1.0.0"></a>
 - [x] Have a list with official and scam websites.
