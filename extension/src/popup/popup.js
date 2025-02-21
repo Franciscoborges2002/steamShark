@@ -23,3 +23,39 @@
     });
   });
 }); */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const contentDiv = document.querySelector(".content");
+  const extensionId = chrome.runtime.id;
+
+  //Create items
+  const outtterDiv = document.createElement("div"); //Outter div
+  const ulItem = document.createElement("ul"); //Main undordered lsit
+  const ilSettings = document.createElement("li"); //List item for Settings
+  const ilHistory = document.createElement("li"); //List item for History
+  const aSettings = document.createElement("a");
+  const aHistory = document.createElement("a");
+
+  //Create Settings Link
+  aSettings.href = `chrome-extension://${extensionId}/src/pages/settings.html`;
+  aSettings.target = "_blank";
+  aSettings.textContent = "Settings";
+  //Create History Link
+  aHistory.href = `chrome-extension://${extensionId}/src/pages/history.html`;
+  aHistory.target = "_blank";
+  aHistory.textContent = "History";
+
+  //Append a items to il's
+  ilSettings.appendChild(aSettings);
+  ilHistory.appendChild(aHistory);
+
+  //Append both il's to main ul
+  ulItem.appendChild(ilSettings);
+  ulItem.appendChild(ilHistory);
+
+  //Append ul to an outter div
+  outtterDiv.appendChild(ulItem);
+
+  //Add html to the page
+  contentDiv.insertAdjacentHTML("beforeend", outtterDiv.innerHTML);
+});
