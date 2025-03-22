@@ -125,13 +125,10 @@ And it's done!
                 [x] Finish the base application
             </li>
             <li>
-                [ ] Publish on marketplaces of extensions to people to use.
+                [x] Publish on marketplaces of extensions to people to use.
             </li>
             <li>
-                [ ] Create an steam bot so users can contribute to the lists as well.
-            </li>
-            <li>
-                [ ] Specify more information on both official and scam websites, so users can read more about them in the website.
+                [ ] Specify more information on both official and scam websites, so users can read more about.
             </li>
         </ul>
     </div>
