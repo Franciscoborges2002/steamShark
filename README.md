@@ -54,7 +54,7 @@ You can access the <a href="https://franciscoborges2002.github.io/steamShark/" t
         You can either choose to install via:
         <ul>
             <!-- <li><a href="#installTampermonkey">Tampermonkey</a></li> -->
-            <li><a href="#installExtension">Extension</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/%F0%9F%A6%88steamshark/jljepdlbbomdcdmaafflabapkdhiglnf" target="_blank">Extension</a></li>
         </ul>
 
 <!-- <div id="installTampermonkey">
@@ -74,7 +74,7 @@ Have Tampermonkey installed, you can download it through the [official website](
 <h3>Extension</h3>
 
 You just need to go to the following page and add the extension to your web browser
-[steamShark](https://www.google.com).
+[steamShark](https://chromewebstore.google.com/detail/%F0%9F%A6%88steamshark/jljepdlbbomdcdmaafflabapkdhiglnf).
 
 </div>
 
@@ -129,13 +129,10 @@ And it's done!
                 [x] Finish the base application
             </li>
             <li>
-                [ ] Publish on marketplaces of extensions to people to use.
+                [x] Publish on marketplaces of extensions to people to use.
             </li>
             <li>
-                [ ] Create an steam bot so users can contribute to the lists as well.
-            </li>
-            <li>
-                [ ] Specify more information on both official and scam websites, so users can read more about them in the website.
+                [ ] Specify more information on both official and scam websites, so users can read more about.
             </li>
         </ul>
     </div>
