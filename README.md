@@ -1,3 +1,7 @@
+<h2>
+  This repository has been archived, Steam Shark has passed to <a target="_blank" href="https://github.com/steamShark">here</a>.
+</h2>
+
 <h1 align='center'>
   🦈steamShark
 </h1>
